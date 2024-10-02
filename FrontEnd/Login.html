@@ -1,82 +1,160 @@
-<html lang="en">
+<html lang="pt-BR">
 <head>
+    <!-- Link para a fonte "Poppins" do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet"> 
     <link href="css/style.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+    <title>Login</title>
     <style>
         body {
-            background-color: #1c1c1c; /* Mantém a cor de fundo */
+            background-image: url('https://i.pinimg.com/564x/68/11/0b/68110bf01ce0093efcb02a75930b0221.jpg'); /* Define a imagem de fundo */
+            background-repeat: repeat;
+            background-size: contain;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             color: #fff;
         }
-        
+
         .login-container {
-            background-color: #2c2c2c;
+            background-color: #2c2c2c; /* Cor sólida sem transparência */
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             text-align: center;
+            max-width: 350px;
+            width: 100%;
         }
-        
+
         h2 {
             margin-bottom: 20px;
             font-size: 24px;
         }
-        
+
         input[type="text"], input[type="password"] {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
             border: none;
             border-radius: 5px;
             background-color: #1c1c1c;
             color: #fff;
+            font-size: 16px;
         }
-        
+
         input[type="submit"] {
-            background-color: #777;
+            background-color: #4ca3af;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
         }
-        
+
         input[type="submit"]:hover {
-            background-color: #555;
+            background-color: hwb(184 27% 37%);
+        }
+
+        .btn-link {
+            background-color: transparent;
+            border: none;
+            color: #197d85;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .btn-link:hover {
+            color: #45a049;
+        }
+
+        .error-message {
+            color: #ff4d4d;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .success-message {
+            color: #4CAF50;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .extra-options {
+            margin-top: 20px;
+        }
+
+        /* Melhorando a responsividade */
+        @media (max-width: 768px) {
+            .login-container {
+                width: 90%; /* Ajusta o tamanho do container em telas menores */
+            }
+
+            h2 {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="login-container">
-        <h2>Sign In / Log In</h2>
+        <h2>Login</h2>
         <form id="loginForm" action="#" method="POST">
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Sign In">
+            <input type="text" id="username" name="username" placeholder="Nome de usuário" required>
+            <input type="password" id="password" name="password" placeholder="Senha" required>
+            <input type="submit" value="Entrar">
         </form>
+        <div id="message"></div> <!-- Div para exibir a mensagem de erro ou sucesso -->
+
+        <div class="extra-options">
+            <button class="btn-link" id="forgotPassword">Esqueci a senha</button>
+            <button class="btn-link" id="register">Ainda não possui cadastro?</button>
+        </div>
     </div>
 
     <script>
         document.getElementById("loginForm").addEventListener("submit", function(event) {
-
             event.preventDefault();
 
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var messageDiv = document.getElementById("message");
 
-            document.getElementById("username").value = "";
-            document.getElementById("password").value = "";
+            // Limpa a mensagem de erro anterior
+            messageDiv.innerHTML = "";
 
+            // Simulação simples de login (troque isso por uma autenticação real com o backend)
+            if (username === "" || password === "") {
+                messageDiv.innerHTML = "<p class='error-message'>Por favor, preencha todos os campos.</p>";
+            } else if (username === "admin" && password === "1234") {
+                messageDiv.innerHTML = "<p class='success-message'>Login bem-sucedido!</p>";
+                // Limpa os campos do formulário
+                document.getElementById("username").value = "";
+                document.getElementById("password").value = "";
+            } else {
+                messageDiv.innerHTML = "<p class='error-message'>Credenciais incorretas. Tente novamente.</p>";
+            }
+        });
 
-            alert("Usuario Registrado!");
+        // Adiciona evento para "Esqueci a senha"
+        document.getElementById("forgotPassword").addEventListener("click", function() {
+            window.location.href = "/recuperacao_senha"; // URL real para recuperação de senha
+        });
+
+        // Adiciona evento para "Ainda não possui cadastro?"
+        document.getElementById("register").addEventListener("click", function() {
+            window.location.href = "/cadastro"; // URL real para a página de cadastro
         });
     </script>
 </body>
 </html>
-
