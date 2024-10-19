@@ -1,4 +1,4 @@
-package com.example;
+package com.goodlisteners;
 
 public class App {
     public static void main(String[] args) {
