@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.example.AppTest
 -------------------------------------------------------------------------------
+<<<<<<< Updated upstream:target/surefire-reports/com.example.AppTest.txt
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s - in com.example.AppTest
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s - in com.goodlisteners.AppTest
+>>>>>>> Stashed changes:target/surefire-reports/com.goodlisteners.AppTest.txt

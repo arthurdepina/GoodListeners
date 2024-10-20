@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream:target/surefire-reports/TEST-com.example.AppTest.xml
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.AppTest" time="0.015" tests="1" errors="0" skipped="0" failures="0">
+=======
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.goodlisteners.AppTest" time="0.013" tests="1" errors="0" skipped="0" failures="0">
+>>>>>>> Stashed changes:target/surefire-reports/TEST-com.goodlisteners.AppTest.xml
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +16,11 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="BR"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/22.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
+<<<<<<< Updated upstream:target/surefire-reports/TEST-com.example.AppTest.xml
     <property name="sun.java.command" value="/Users/adepina/Documents/GitHub/GoodListeners/target/surefire/surefirebooter11377041118358674143.jar /Users/adepina/Documents/GitHub/GoodListeners/target/surefire 2024-10-02T01-01-02_713-jvmRun1 surefire11611416334606124786tmp surefire_0303009008473590111tmp"/>
+=======
+    <property name="sun.java.command" value="/Users/adepina/Documents/GitHub/GoodListeners/target/surefire/surefirebooter10634192425425958423.jar /Users/adepina/Documents/GitHub/GoodListeners/target/surefire 2024-10-20T11-33-22_715-jvmRun1 surefire16006420655351824046tmp surefire_08654463944518985680tmp"/>
+>>>>>>> Stashed changes:target/surefire-reports/TEST-com.goodlisteners.AppTest.xml
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/adepina/Documents/GitHub/GoodListeners/target/test-classes:/Users/adepina/Documents/GitHub/GoodListeners/target/classes:/Users/adepina/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.2/junit-jupiter-5.8.2.jar:/Users/adepina/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/Users/adepina/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/adepina/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/Users/adepina/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/adepina/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:/Users/adepina/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar:/Users/adepina/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -28,7 +36,11 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
+<<<<<<< Updated upstream:target/surefire-reports/TEST-com.example.AppTest.xml
     <property name="surefire.real.class.path" value="/Users/adepina/Documents/GitHub/GoodListeners/target/surefire/surefirebooter11377041118358674143.jar"/>
+=======
+    <property name="surefire.real.class.path" value="/Users/adepina/Documents/GitHub/GoodListeners/target/surefire/surefirebooter10634192425425958423.jar"/>
+>>>>>>> Stashed changes:target/surefire-reports/TEST-com.goodlisteners.AppTest.xml
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.2"/>
     <property name="user.name" value="adepina"/>
