@@ -19,6 +19,12 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.42.0.0</version> <!-- Certifique-se de pegar a versão mais recente -->
+        </dependency>
+
     </dependencies>
 
     <build>

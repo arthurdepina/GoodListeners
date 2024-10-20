@@ -1,4 +1,5 @@
 # Compiled class file
+.class
 
 # Log file
 *.log
@@ -30,3 +31,6 @@ config/local.properties
 
 # Makefile ecofin
 makefile_ecofin.mk
+
+# Maven
+target/*
