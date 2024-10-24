@@ -16,14 +16,12 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// TokenResponse represents the Spotify API token response
 type TokenResponse struct {
 	AccessToken string `json:"access_token"`
 	TokenType   string `json:"token_type"`
 	ExpiresIn   int    `json:"expires_in"`
 }
 
-// Artist represents a partial Spotify artist object
 type Artist struct {
 	Name       string `json:"name"`
 	ID         string `json:"id"`
@@ -33,7 +31,6 @@ type Artist struct {
 	} `json:"followers"`
 }
 
-// SpotifyClient handles Spotify API authentication and requests
 type SpotifyClient struct {
 	ClientID     string
 	ClientSecret string
@@ -41,7 +38,6 @@ type SpotifyClient struct {
 	HTTPClient   *http.Client
 }
 
-// NewSpotifyClient creates a new SpotifyClient with the provided credentials
 func NewSpotifyClient(clientID, clientSecret string) *SpotifyClient {
 	return &SpotifyClient{
 		ClientID:     clientID,
@@ -52,7 +48,6 @@ func NewSpotifyClient(clientID, clientSecret string) *SpotifyClient {
 	}
 }
 
-// GetAccessToken obtains a new access token from Spotify
 func (c *SpotifyClient) GetAccessToken() error {
 	auth := base64.StdEncoding.EncodeToString([]byte(c.ClientID + ":" + c.ClientSecret))
 	data := bytes.NewBuffer([]byte("grant_type=client_credentials"))
@@ -89,7 +84,6 @@ func (c *SpotifyClient) GetAccessToken() error {
 	return nil
 }
 
-// TestAPIAccess makes a test API call to verify the access token
 func (c *SpotifyClient) TestAPIAccess() (*Artist, error) {
 	req, err := http.NewRequest("GET", "https://api.spotify.com/v1/artists/7sOR7gk6XUlGnxj3p9F54k", nil)
 	if err != nil {
@@ -121,10 +115,8 @@ func (c *SpotifyClient) TestAPIAccess() (*Artist, error) {
 	return &artist, nil
 }
 
-// loadEnvFile loads environment variables from a specified path or falls back to default locations
 func loadEnvFile(envPath string) error {
 	if envPath != "" {
-		// If a specific path is provided, try to load it
 		absPath, err := filepath.Abs(envPath)
 		if err != nil {
 			return fmt.Errorf("error resolving env file path: %w", err)
@@ -137,12 +129,11 @@ func loadEnvFile(envPath string) error {
 		return godotenv.Load(absPath)
 	}
 
-	// If no path is provided, try multiple default locations
 	locations := []string{
-		".env",                      // Current directory
-		"../../.env",                // Two levels up (app directory in your case)
-		"../../../.env",             // Three levels up
-		filepath.Join("..", ".env"), // One level up
+		".env",
+		"../../.env",
+		"../../../.env",
+		filepath.Join("..", ".env"),
 	}
 
 	for _, loc := range locations {
@@ -159,16 +150,13 @@ func loadEnvFile(envPath string) error {
 }
 
 func main() {
-	// Define command-line flags
 	envPath := flag.String("env", "", "Path to .env file (relative or absolute)")
 	flag.Parse()
 
-	// Load environment variables
 	if err := loadEnvFile(*envPath); err != nil {
 		log.Fatal("Error loading .env file:", err)
 	}
 
-	// Get credentials from environment variables
 	clientID := os.Getenv("SPOTIFY_CLIENT_ID")
 	clientSecret := os.Getenv("SPOTIFY_CLIENT_SECRET")
 
@@ -176,24 +164,20 @@ func main() {
 		log.Fatal("Missing Spotify credentials in .env file")
 	}
 
-	// Create a new Spotify client
 	client := NewSpotifyClient(clientID, clientSecret)
 
-	// Get access token
 	fmt.Println("Getting access token...")
 	if err := client.GetAccessToken(); err != nil {
 		log.Fatal("Error getting access token:", err)
 	}
 	fmt.Println("Successfully obtained access token!")
 
-	// Test the API access
 	fmt.Println("\nTesting API access...")
 	artist, err := client.TestAPIAccess()
 	if err != nil {
 		log.Fatal("Error testing API access:", err)
 	}
 
-	// Print the results
 	fmt.Printf("\nAPI Test Successful!\n")
 	fmt.Printf("Retrieved artist: %s\n", artist.Name)
 	fmt.Printf("Popularity: %d\n", artist.Popularity)
