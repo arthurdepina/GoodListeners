@@ -34,3 +34,6 @@ makefile_ecofin.mk
 
 # Maven
 target/*
+
+# Enviroment Variables
+.env
