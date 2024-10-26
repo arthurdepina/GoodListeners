@@ -7,12 +7,13 @@ CREATE TABLE IF NOT EXISTS Albums (
     album_id INTEGER PRIMARY KEY AUTOINCREMENT, 
     name TEXT NOT NULL, 
     artist TEXT NOT NULL, 
-    genre TEXT, 
+    genre TEXT,
     year INTEGER, 
     length INTEGER, 
     cover_url TEXT, 
     average_score REAL DEFAULT 0.0, 
-    number_favorites INTEGER DEFAULT 0);
+    number_favorites INTEGER DEFAULT 0,
+    spotify_id TEXT,);
 
 CREATE TABLE IF NOT EXISTS Reviews ( 
     reviews_id INTEGER PRIMARY KEY AUTOINCREMENT, 
