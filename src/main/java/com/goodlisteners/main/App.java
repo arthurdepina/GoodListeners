@@ -1,16 +1,16 @@
 package com.goodlisteners.main;
 
-import com.goodlisteners.user.*;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication  // Anotação que inicia o Spring Boot
 public class App {
     public static void main(String[] args) {
-        System.out.println(getGreeting());
-
-        System.out.println("Iniciando aplicação...");
+        // Inicializa o contexto do Spring Boot e inicia o servidor
+        SpringApplication.run(App.class, args);
         
-        // Testar a conexão com o banco de dados
-        UserRepository userRepository = new UserRepository();
-        userRepository.testConnection();
+        System.out.println(getGreeting());
+        System.out.println("Iniciando aplicação...");
     }
 
     // Método que retornará uma mensagem de saudação

@@ -1,3 +1,9 @@
-com\goodlisteners\user\model\User.class
-com\goodlisteners\user\UserRepository.class
-com\goodlisteners\main\App.class
+com/goodlisteners/service/ReviewService.class
+com/goodlisteners/controllers/ReviewRequest.class
+com/goodlisteners/user/model/User.class
+com/goodlisteners/user/UserRepository.class
+com/goodlisteners/repository/ReviewRepository.class
+com/goodlisteners/main/App.class
+com/goodlisteners/repository/AlbumRepository.class
+com/goodlisteners/handlers/ReviewHandler.class
+com/goodlisteners/controllers/ReviewController.class
