@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Repository {
+public class UserRepository {
     private static final String URL = "jdbc:sqlite:goodlisteners.db";
 
     public void testConnection() {

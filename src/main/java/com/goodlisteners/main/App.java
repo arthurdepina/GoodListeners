@@ -9,7 +9,7 @@ public class App {
         System.out.println("Iniciando aplicação...");
         
         // Testar a conexão com o banco de dados
-        Repository userRepository = new Repository();
+        UserRepository userRepository = new UserRepository();
         userRepository.testConnection();
     }
 
