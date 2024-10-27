@@ -1,2 +1,3 @@
-com/goodlisteners/main/App.class
-com/goodlisteners/user/Repository.class
+com\goodlisteners\user\model\User.class
+com\goodlisteners\user\UserRepository.class
+com\goodlisteners\main\App.class
