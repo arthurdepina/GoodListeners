@@ -145,9 +145,6 @@ nav.top-nav a.sign-in {
     height: 100%;
     border-radius: 2px;
 }
-.critic-score .score-fill {
-    background-color: #66cc33;
-}
 .user-score .score-fill {
     background-color: #3399ff;
 }

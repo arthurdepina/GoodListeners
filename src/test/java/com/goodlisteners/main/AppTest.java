@@ -1,4 +1,4 @@
-package com.goodlisteners;
+package com.goodlisteners.main;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;

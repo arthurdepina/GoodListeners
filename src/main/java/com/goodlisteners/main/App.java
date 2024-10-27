@@ -1,4 +1,4 @@
-package com.goodlisteners;
+package com.goodlisteners.main;
 
 import com.goodlisteners.user.*;
 
