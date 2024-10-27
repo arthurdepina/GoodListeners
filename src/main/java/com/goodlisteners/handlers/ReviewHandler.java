@@ -1,7 +1,9 @@
 package com.goodlisteners.handlers;
 
 import com.goodlisteners.service.ReviewService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ReviewHandler {
     private final ReviewService reviewService;
 

@@ -2,19 +2,18 @@ package com.goodlisteners.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication  // Anotação que inicia o Spring Boot
+@SpringBootApplication
+@ComponentScan(basePackages = {
+    "com.goodlisteners.main",
+    "com.goodlisteners.controllers",
+    "com.goodlisteners.handlers",
+    "com.goodlisteners.service",
+    "com.goodlisteners.repository"
+})
 public class App {
     public static void main(String[] args) {
-        // Inicializa o contexto do Spring Boot e inicia o servidor
         SpringApplication.run(App.class, args);
-        
-        System.out.println(getGreeting());
-        System.out.println("Iniciando aplicação...");
-    }
-
-    // Método que retornará uma mensagem de saudação
-    public static String getGreeting() {
-        return "Hello, World!";
     }
 }

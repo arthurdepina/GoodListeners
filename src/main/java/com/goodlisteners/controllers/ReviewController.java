@@ -1,7 +1,6 @@
 package com.goodlisteners.controllers;
 
 import com.goodlisteners.handlers.ReviewHandler;
-import com.goodlisteners.controllers.ReviewRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,4 +22,9 @@ public class ReviewController {
         reviewHandler.handleReview(request.getUserId(), request.getAlbumId(), request.getRating());
         return ResponseEntity.ok("Avaliação enviada com sucesso!");
     }
+
+    @GetMapping("/ping")
+    public ResponseEntity<String> ping() {
+    return ResponseEntity.ok("Server is running!");
+}
 }

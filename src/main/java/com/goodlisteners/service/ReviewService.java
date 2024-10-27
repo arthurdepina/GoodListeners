@@ -2,7 +2,9 @@ package com.goodlisteners.service;
 
 import com.goodlisteners.repository.ReviewRepository;
 import com.goodlisteners.repository.AlbumRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final AlbumRepository albumRepository;

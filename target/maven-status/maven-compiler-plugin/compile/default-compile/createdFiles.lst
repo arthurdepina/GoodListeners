@@ -1,6 +1,7 @@
 com/goodlisteners/service/ReviewService.class
 com/goodlisteners/controllers/ReviewRequest.class
 com/goodlisteners/user/model/User.class
+com/goodlisteners/config/DatabaseConfig.class
 com/goodlisteners/user/UserRepository.class
 com/goodlisteners/repository/ReviewRepository.class
 com/goodlisteners/main/App.class
