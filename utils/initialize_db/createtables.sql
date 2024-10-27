@@ -21,4 +21,4 @@ CREATE TABLE IF NOT EXISTS Reviews (
     album_id INTEGER, 
     rating INTEGER CHECK (rating >= 0 AND rating <= 100), 
     FOREIGN KEY (user_id) REFERENCES User(user_id), 
-    FOREIGN KEY (album_id) REFERENCES Albums(album_id));;
+    FOREIGN KEY (album_id) REFERENCES Albums(album_id));
