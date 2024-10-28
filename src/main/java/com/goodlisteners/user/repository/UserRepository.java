@@ -1,4 +1,4 @@
-package com.goodlisteners.user;
+package com.goodlisteners.user.repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

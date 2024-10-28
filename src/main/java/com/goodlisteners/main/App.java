@@ -1,6 +1,6 @@
 package com.goodlisteners.main;
 
-import com.goodlisteners.user.*;
+import com.goodlisteners.user.repository.UserRepository;
 
 public class App {
     public static void main(String[] args) {
