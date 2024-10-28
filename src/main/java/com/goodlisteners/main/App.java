@@ -10,7 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
     "com.goodlisteners.controllers",
     "com.goodlisteners.handlers",
     "com.goodlisteners.service",
-    "com.goodlisteners.repository"
+    "com.goodlisteners.repository",
+    "com.goodlisteners.followuser"
 })
 public class App {
     public static void main(String[] args) {

@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("connections")
+@RequestMapping("/connections")
 public class FollowUserController {
     private final FollowUserService followUserService;
 
