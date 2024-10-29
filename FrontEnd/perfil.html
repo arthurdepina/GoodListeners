@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/style_profile.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Perfil do Usuário</title>
+</head>
+<body>
+    <div class="container">
+        <div class="user-profile">
+            <div class="user-photo">
+                <img src="assets/free-user-icon-3296-thumb.png" alt="Foto do Usuário">
+            </div>
+            <div class="user-info">
+                <h1 class="username">Nome do Usuário</h1>
+                <div class="follow-stats">
+                    <div class="followers">
+                        <p class="score">0</p>
+                        <p class="score-title">Seguidores</p>
+                    </div>
+                    <div class="following">
+                        <p class="score">0</p>
+                        <p class="score-title">Seguindo</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="followToggle" onclick="toggleFollow()">
+                        <span class="slider"></span>
+                        <span class="toggle-text">Follow</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="reviews-section">
+            <h2>Reviews</h2>
+            <div class="review">
+                <div class="album-cover">
+                    <!--visualização de uma imagem do album-->
+                    <img src="assets/In_the_Aeroplane_Over_the_Sea_Capa.jpg" alt="capa album 1">
+                </div>
+                <div class="album-info">
+                    <p class="album-title">Nome do Álbum - Nome do Artista</p>
+                    <p class="album-rating">Nota: 0.0</p>
+                </div>
+            </div>
+            <div class="review">
+                <div class="album-cover"></div>
+                <div class="album-info">
+                    <p class="album-title">Nome do Álbum - Nome do Artista</p>
+                    <p class="album-rating">Nota: 0.0</p>
+                </div>
+            </div>
+            <div class="review">
+                <div class="album-cover"></div>
+                <div class="album-info">
+                    <p class="album-title">Nome do Álbum - Nome do Artista</p>
+                    <p class="album-rating">Nota: 0.0</p>
+                </div>
+            </div>
+            <!-- adicione mais divs .review se quiser -->
+        </div>
+    </div>
+
+    <script>
+        function toggleFollow() {
+            const toggleText = document.querySelector('.toggle-text');
+            const followToggle = document.getElementById('followToggle');
+            toggleText.innerText = followToggle.checked ? "Following" : "Follow";
+        }
+    </script>
+</body>
+</html>
