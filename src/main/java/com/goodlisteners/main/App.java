@@ -3,6 +3,7 @@ package com.goodlisteners.main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+// import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {
@@ -11,7 +12,9 @@ import org.springframework.context.annotation.ComponentScan;
     "com.goodlisteners.handlers",
     "com.goodlisteners.service",
     "com.goodlisteners.repository",
-    "com.goodlisteners.followuser"
+    "com.goodlisteners.followuser.controller",
+    "com.goodlisteners.followuser.service",
+    "com.goodlisteners.followuser.repository"
 })
 public class App {
     public static void main(String[] args) {

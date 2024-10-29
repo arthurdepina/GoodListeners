@@ -1,6 +1,5 @@
 package com.goodlisteners.followuser.service;
 
-import com.goodlisteners.followuser.model.UserFollowers;
 import com.goodlisteners.followuser.repository.FollowUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,15 +14,10 @@ public class FollowUserService {
     }
 
     public void followUser(Integer userId, Integer followerId) {
-        if (!followUserRepository.existsByUserIdAndFollowerId(userId, followerId)) {
-            UserFollowers userFollower = new UserFollowers();
-            userFollower.setUserId(userId);
-            userFollower.setFollowerId(followerId);
-            followUserRepository.save(userFollower);
-        }
+        followUserRepository.followUser(userId, followerId);
     }
 
     public void unfollowUser(Integer userId, Integer followerId) {
-        followUserRepository.deleteByUserIdAndFollowerId(userId, followerId);
+        followUserRepository.unfollowUser(userId, followerId);
     }
 }
