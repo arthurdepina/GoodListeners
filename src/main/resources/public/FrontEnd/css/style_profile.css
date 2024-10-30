@@ -1,0 +1,173 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, Ubuntu, sans-serif;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+.container {
+    width: 95%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-photo img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.username {
+    font-size: 20px;
+    color: #fff;
+    margin: 0;
+}
+
+.follow-stats {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.followers, .following {
+    text-align: center;
+    min-width: 80px;
+}
+
+.score-title {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.score {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.toggle {
+    position:relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    top: -14px; 
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #444;
+    transition: 0.4s;
+    border-radius: 15px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-text {
+    font-size: 12px;
+    color: #fff;
+    margin-top: 5px;
+    display: block;
+    text-align: center;
+}
+
+
+.reviews-section {
+    width: 100%;
+    background-color: #2b2b2b;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.reviews-section h2 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.review {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+
+.album-cover {
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.album-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.album-info {
+    flex-grow: 1;
+}
+
+.album-title {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.album-rating {
+    font-size: 12px;
+    color: #777;
+}

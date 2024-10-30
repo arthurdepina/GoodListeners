@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="css/style2.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eminem - Artist Details</title>
+</head>
+<body>
+    <div class="container">
+        <div class="artist-info">
+            <h2 class="artist-name">The Eminem Show</h2>
+            <div class="artist-image">
+                <img src="assets/The_Eminem_Show.jpg" alt="Eminem">
+            </div>
+            <div class="input-container">
+                <input type="number" id="albumRating" placeholder="Avalie">
+            </div>
+            <div id="savedRating"></div>
+        </div>
+        <div class="scores-container">
+            <div class="artist-scores">
+                <div class="critic-score">
+                    <h3>CRITIC SCORE</h3>
+                    <p class="score">78</p>
+                    <p class="reviews">Based on 150 reviews</p>
+                    <div class="score-bar">
+                        <div class="score-fill critic-fill" style="width: 78%;"></div>
+                    </div>
+                </div>
+                <div class="user-score">
+                    <h3>USER SCORE</h3>
+                    <p class="score">83</p>
+                    <p class="ratings">Based on 20,103 ratings</p>
+                    <div class="score-bar">
+                        <div class="score-fill user-fill" style="width: 83%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="score-box" style="justify-content: center;">
+                <button class="follow-btn">FOLLOW</button>
+                <span class="followers">450 Followers</span>
+            </div>
+        </div>
+
+        <div class="details-container">
+            <div class="artist-details-info">
+                <h3>DETAILS</h3>
+                <p class="album-title">
+                    The Eminem Show
+                    <span class="album-subtitle"> / album title</span>
+                </p>
+                <p class="release-date">
+                    Released on: May 26, 2002
+                    <span class="album-subtitle"> / release date</span>
+                </p>
+                <p class="genres">
+                    Hip Hop, Rap
+                    <span class="album-subtitle"> / genre</span>
+                </p>
+                <p class="label">
+                    Label: Aftermath, Shady, Interscope
+                    <span class="album-subtitle"> / label</span>
+                </p>
+                <p class="length">
+                    Length: 58:25
+                    <span class="album-subtitle"> / album length</span>
+                </p>
+                <p class="website">
+                    <a href="http://www.eminem.com" target="_blank">www.eminem.com</a>
+                    <span class="album-subtitle"> / website</span>
+                </p>
+                <div class="tags">
+                    <span class="tag">hip hop</span>
+                    <span class="tag">rap</span>
+                    <span class="tag">Grammy winner</span>
+                    <span class="tag">2000s</span>
+                    <span class="tag">classic</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container2">
+        <a href="Site1.html" class="return"><button class="btn">VOLTAR</button></a>
+    </div>
+    <script>
+    document.getElementById("albumRating").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            const rating = event.target.value;
+        
+            if (rating >= 0 && rating <= 100) {
+                document.getElementById("savedRating").textContent = `Rating: ${rating}`;
+                localStorage.setItem("albumRating", rating);
+                document.querySelector(".input-container").style.display = "none";
+            } else {
+                alert("Por favor, insira um número entre 0 e 100.");
+            }
+        }
+    });
+    </script>
+</body>
+</html>
