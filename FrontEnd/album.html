@@ -4,17 +4,17 @@
     <link href="css/style2.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlbumName</title>
+    <title>OK Computer OKNOTOK 1997 2017</title>
 </head>
 <body>
     <div class="container">
         <div class="artist-info">
-            <h2 class="artist-name">AlbumName</h2>
+            <h2 class="album-name">OK Computer OKNOTOK 1997 2017 Radiohead</h2>
             <div class="artist-image">
-                <img src="pathToAlbumCover" alt="PathToAlbumCover">
+                <img src="https://i.scdn.co/image/ab67616d0000b2730797b2dcca7a453c3374c599" alt="PathToAlbumCover">
             </div>
             <div class="input-container">
-                <input type="number" id="albumRating" placeholder="Avalie" min="0" max="100"> <!-- A nota é inserida pelo usuário aqui.-->
+                <input type="number" id="albumRating" placeholder="Avalie" min="0" max="100"> 
                 <button id="saveRatingButton">Salvar Avaliação</button>
             </div>
             <div id="savedRating"></div>
@@ -36,19 +36,19 @@
                 <!-- No futuro, todos esses campos devem ser preenchidos automaticamente de acordo com as informações da base de dados. -->
                 <h3>DETAILS</h3>
                 <p class="album-title">
-                    AlbumName
+                    OK Computer OKNOTOK 1997 2017
                     <span class="album-subtitle"> / album title</span>
                 </p>
                 <p class="release-date">
-                    Released on: ReleaseYear
+                    Released on: 2017
                     <span class="album-subtitle"> / release date</span>
                 </p>
                 <p class="genres">
-                    AlbumGenre
+                    Rock
                     <span class="album-subtitle"> / genre</span>
                 </p>
                 <p class="length">
-                    Length: AlbumLength
+                    Length: 1h 32min
                     <span class="album-subtitle"> / album length</span>
                 </p>
     </div>
@@ -56,12 +56,29 @@
         <a href="Site1.html" class="return"><button class="btn">VOLTAR</button></a>
     </div>
     <script>
-        document.getElementById("saveRatingButton").addEventListener("click", async function() {
-            const rating = parseInt(document.getElementById("albumRating").value);
-            const albumId = 1;  // Substitua com o ID real do álbum
-            const userId = 1;   // Substitua com o ID real do usuário
-            
-            if (rating >= 1 && rating <= 5) {
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if elements exist before adding event listeners
+            const saveRatingButton = document.getElementById("saveRatingButton");
+            const albumRatingInput = document.getElementById("albumRating");
+            const savedRatingDisplay = document.getElementById("savedRating");
+
+            if (!saveRatingButton || !albumRatingInput || !savedRatingDisplay) {
+                console.error("Required elements not found. Please check your HTML.");
+                return;
+            }
+
+            saveRatingButton.addEventListener("click", async function() {
+                const rating = parseInt(albumRatingInput.value);
+                const albumId = 328;
+                const userId = 1;
+                
+                // Validate input
+                if (isNaN(rating) || rating < 0 || rating > 100) {
+                    alert("Por favor, insira uma nota válida entre 0 e 100.");
+                    return;
+                }
+
                 const reviewData = {
                     userId: userId,
                     albumId: albumId,
@@ -69,30 +86,39 @@
                 };
 
                 try {
-                    // Enviar a avaliação ao backend via API
+                    // First, check if the server is reachable
                     const response = await fetch("http://localhost:8080/api/review", {
                         method: "POST",
                         headers: {
-                            "Content-Type": "application/json"
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
                         },
-                        body: JSON.stringify(reviewData)
+                        body: JSON.stringify(reviewData),
+                        // Add timeout to prevent long waiting times
+                        signal: AbortSignal.timeout(5000)
                     });
 
+                    // Check for specific status codes
                     if (response.ok) {
-                        document.getElementById("savedRating").textContent = `Rating: ${rating}`;
+                        savedRatingDisplay.textContent = `Rating: ${rating}`;
                         alert("Avaliação salva com sucesso!");
                     } else {
-                        alert("Erro ao salvar a avaliação. Tente novamente.");
+                        const errorText = await response.text();
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
                     }
                 } catch (error) {
-                    console.error("Erro:", error);
-                    alert("Erro ao conectar ao servidor.");
+                    console.error("Erro detalhado:", error);
+                    
+                    if (error.name === 'TimeoutError') {
+                        alert("O servidor não respondeu a tempo. Verifique se o servidor está rodando em http://localhost:8080");
+                    } else if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+                        alert("Não foi possível conectar ao servidor. Verifique se o servidor está rodando em http://localhost:8080");
+                    } else {
+                        alert(`Erro ao salvar a avaliação: ${error.message}`);
+                    }
                 }
-            } else {
-                alert("Por favor, insira uma nota entre 0 e 100.");
-            }
-
+            });
         });
-        </script>
+    </script>
 </body>
 </html>
