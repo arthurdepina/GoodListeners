@@ -3,7 +3,7 @@ package com.goodlisteners.followuser.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "UserFollowers")
+@Table(name = "user_followers")
 public class UserFollowers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
