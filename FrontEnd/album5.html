@@ -4,14 +4,14 @@
     <link href="css/stylealbum.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ye</title>
+    <title>reputation</title>
 </head>
 <body>
     <div class="container">
         <div class="artist-info">
-            <h2 class="album-name">Ye - Kanye West</h2>
+            <h2 class="album-name">reputation <br> Taylor Swift</h2>
             <div class="artist-image">
-                <img src="https://i.scdn.co/image/ab67616d0000b27397508a4b756763370510bd44" alt="PathToAlbumCover">
+                <img src="https://i.scdn.co/image/ab67616d0000b273da5d5aeeabacacc1263c0f4b" alt="PathToAlbumCover">
             </div>
             <div class="input-container">
                 <input type="number" id="albumRating" placeholder="Avalie" min="0" max="100"> 
@@ -36,19 +36,19 @@
                 <!-- No futuro, todos esses campos devem ser preenchidos automaticamente de acordo com as informações da base de dados. -->
                 <h3>DETAILS</h3>
                 <p class="album-title">
-                    Ye
+                    reputation
                     <span class="album-subtitle"> / album title</span>
                 </p>
                 <p class="release-date">
-                    Released on: 2018
+                    Released on: 2017
                     <span class="album-subtitle"> / release date</span>
                 </p>
                 <p class="genres">
-                    Hip Hop
+                    Pop
                     <span class="album-subtitle"> / genre</span>
                 </p>
                 <p class="length">
-                    23 min 43 sec
+                    55 min 45 sec
                     <span class="album-subtitle"> / album length</span>
                 </p>
     </div>
@@ -70,7 +70,7 @@
 
             saveRatingButton.addEventListener("click", async function() {
                 const rating = parseInt(albumRatingInput.value);
-                const albumId = 108;
+                const albumId = 301;
                 const userId = 1;
                 
                 // Validate input
