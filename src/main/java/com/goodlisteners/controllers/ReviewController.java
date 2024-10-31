@@ -22,7 +22,6 @@ public class ReviewController {
 
     @PostMapping("/review")
     public ResponseEntity<String> submitReview(@RequestBody ReviewRequest request) {
-        // Passa a avaliação para o ReviewHandler
         reviewHandler.handleReview(request.getUserId(), request.getAlbumId(), request.getRating());
         return ResponseEntity.ok("Avaliação enviada com sucesso!");
     }
