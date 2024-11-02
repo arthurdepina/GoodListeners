@@ -37,3 +37,4 @@ target/*
 
 # Enviroment Variables
 .env
+src/main/java/com/goodlisteners/main/teste.txt
