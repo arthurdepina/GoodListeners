@@ -2,6 +2,7 @@ package com.goodlisteners.followuser.service;
 
 import com.goodlisteners.followuser.model.UserFollowers;
 import com.goodlisteners.followuser.repository.FollowUserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ public class FollowUserService {
         }
     }
 
+    @Transactional
     public void unfollowUser(Integer userId, Integer followerId) {
         followUserRepository.deleteByUserIdAndFollowerId(userId, followerId);
     }
