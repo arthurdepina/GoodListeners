@@ -21,9 +21,9 @@
                         <p class="score-title">Seguidores</p>
                     </div>
                     <div class="following">
-                        <p class="score">0</p>
-                        <p class="score-title">Seguindo</p>
-                    </div>
+                    <p class="score">0</p>
+                    <p class="score-title">Seguindo</p>
+                </div>
                     <label class="toggle">
                         <input type="checkbox" id="followToggle" onclick="toggleFollow()">
                         <span class="slider"></span>
@@ -68,8 +68,15 @@
 
     <script>
         async function toggleFollow() {
+            const followersScore = document.querySelector(".followers .score");
             const toggleText = document.querySelector('.toggle-text');
             const followToggle = document.getElementById('followToggle');
+
+            if (followToggle.checked) {
+                followersScore.textContent = "1";
+            } else {
+                followersScore.textContent = "0";
+            }
 
             toggleText.innerText = followToggle.checked ? "Following" : "Follow";
 
