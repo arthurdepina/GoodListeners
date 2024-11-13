@@ -4,14 +4,14 @@
     <link href="css/stylealbum.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OK Computer OKNOTOK 1997 2017</title>
+    <title>Album Details</title>
 </head>
 <body>
     <div class="container">
         <div class="artist-info">
-            <h2 class="album-name">OK Computer OKNOTOK 1997 2017 <br> Radiohead</h2>
+            <h2 class="album-name" id="albumTitle"></h2>
             <div class="artist-image">
-                <img src="https://i.scdn.co/image/ab67616d0000b2730797b2dcca7a453c3374c599" alt="PathToAlbumCover">
+                <img id="albumCover" alt="Album Cover">
             </div>
             <div class="input-container">
                 <input type="number" id="albumRating" placeholder="Avalie" min="0" max="100"> 
@@ -23,9 +23,9 @@
             <div class="artist-scores">
                 <div class="user-score">
                     <h3>USER SCORE</h3>
-                    <p class="score">Not Enough Reviews</p> <!-- Aqui colocarei depois as notas dadas pelos usuários -->
+                    <p class="score" id="averageScore">Not Enough Reviews</p>
                     <div class="score-bar">
-                        <div class="score-fill user-fill" style="width: 50%;"></div> <!-- No futuro isso será preenchido de acordo com a nota -->
+                        <div class="score-fill user-fill" id="scoreBar" style="width: 50%;"></div>
                     </div>
                 </div>
             </div>
@@ -33,113 +33,35 @@
 
         <div class="details-container">
             <div class="artist-details-info">
-                <!-- No futuro, todos esses campos devem ser preenchidos automaticamente de acordo com as informações da base de dados. -->
                 <h3>DETAILS</h3>
                 <p class="album-title">
-                    OK Computer OKNOTOK 1997 2017
+                    <span id="albumName"></span>
                     <span class="album-subtitle"> / album title</span>
                 </p>
                 <p class="release-date">
-                    Released on: 2017
+                    Released on: <span id="releaseYear"></span>
                     <span class="album-subtitle"> / release date</span>
                 </p>
                 <p class="genres">
-                    Rock
+                    <span id="albumGenre"></span>
                     <span class="album-subtitle"> / genre</span>
                 </p>
                 <p class="length">
-                    1 h 32 min
+                    <span id="albumLength"></span>
                     <span class="album-subtitle"> / album length</span>
                 </p>
+            </div>
         </div>
         <div class="container2">
             <a href="home.html" class="return"><button class="btn">VOLTAR</button></a>
         </div>
     </div>
 
-    <!-- CÓDIGO PARA SESSÃO DE REVIEWS (LINK PÁGINA DO USUÁRIO) -->
     <div class="reviews-section">
         <h2>Reviews</h2>
-        <div class="review">
-            <div class="album-cover">
-                <!--visualização de uma imagem do album-->
-                <img src="assets/foto_perfil_ana.jpeg" alt="Album 1">
-            </div>
-            <div class="album-info">
-                <a class="album-title" href="perfil_ana.html">Ana Senne</a>
-                <p class="album-rating">Nota: 92</p>
-            </div>
-        </div>
+        <div id="reviewsContainer"></div>
     </div>
-    <!--FIM DO CÓDIGO-->
-    <script>
-        // Wait for the DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if elements exist before adding event listeners
-            const saveRatingButton = document.getElementById("saveRatingButton");
-            const albumRatingInput = document.getElementById("albumRating");
-            const savedRatingDisplay = document.getElementById("savedRating");
-    
-            if (!saveRatingButton || !albumRatingInput || !savedRatingDisplay) {
-                console.error("Required elements not found. Please check your HTML.");
-                return;
-            }
-    
-            // Determine API URL based on environment
-            const API_URL = window.location.hostname === 'localhost' 
-                ? 'http://localhost:8080'
-                : 'https://goodlisteners.onrender.com';  // Replace with your Render URL
-    
-            saveRatingButton.addEventListener("click", async function() {
-                const rating = parseInt(albumRatingInput.value);
-                const albumId = 328;
-                const userId = 1;
-                
-                // Validate input
-                if (isNaN(rating) || rating < 0 || rating > 100) {
-                    alert("Por favor, insira uma nota válida entre 0 e 100.");
-                    return;
-                }
-    
-                const reviewData = {
-                    userId: userId,
-                    albumId: albumId,
-                    rating: rating
-                };
-    
-                try {
-                    // Use the environment-appropriate URL
-                    const response = await fetch(`${API_URL}/api/review`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Accept": "application/json"
-                        },
-                        body: JSON.stringify(reviewData),
-                        // Add timeout to prevent long waiting times
-                        signal: AbortSignal.timeout(5000)
-                    });
-    
-                    // Check for specific status codes
-                    if (response.ok) {
-                        savedRatingDisplay.textContent = `Rating: ${rating}`;
-                        alert("Avaliação salva com sucesso!");
-                    } else {
-                        const errorText = await response.text();
-                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
-                    }
-                } catch (error) {
-                    console.error("Erro detalhado:", error);
-                    
-                    if (error.name === 'TimeoutError') {
-                        alert("O servidor não respondeu a tempo. Por favor, tente novamente mais tarde.");
-                    } else if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
-                        alert("Não foi possível conectar ao servidor. Por favor, tente novamente mais tarde.");
-                    } else {
-                        alert(`Erro ao salvar a avaliação: ${error.message}`);
-                    }
-                }
-            });
-        });
-    </script></body>
+
+    <script src="js/album.js"></script>
+</body>
 </html>
