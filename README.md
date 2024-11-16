@@ -2,6 +2,8 @@
 
 [![Java CI with Maven](https://github.com/arthurdepina/GoodListeners/actions/workflows/ci-cd-pipeline.yml/badge.svg)](https://github.com/arthurdepina/GoodListeners/actions/workflows/ci-cd-pipeline.yml)
 
+Disponível em: https://goodlisteners.onrender.com/home.html (WIP)
+
 Esse projeto utiliza Java (com Maven) e SQLite. Seguem os pré-requisitos para desenvolvimento local da aplicação:
 
 ## MacOS
