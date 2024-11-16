@@ -49,12 +49,19 @@ public class AlbumRepository {
         }
     }
 
-    public void updateAlbumAverage(int albumId, double newAverage) {
+    public boolean updateAlbumAverage(int albumId, double newAverage) {
+        String sql = "UPDATE Albums SET average_score = ROUND(?, 1) WHERE album_id = ?";
+        
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("UPDATE Albums SET average_score = ? WHERE album_id = ?")) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            newAverage = Math.min(100, Math.max(0, newAverage));
+            
             stmt.setDouble(1, newAverage);
             stmt.setInt(2, albumId);
-            stmt.executeUpdate();
+            
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
         } catch (SQLException e) {
             throw new RuntimeException("Error updating album average: " + e.getMessage(), e);
         }

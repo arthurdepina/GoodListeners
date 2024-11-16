@@ -1,93 +1,116 @@
-// Determine API URL based on environment
 const API_URL = window.location.hostname === 'localhost' 
     ? 'http://localhost:8080'
     : 'https://goodlisteners.onrender.com';
 
 async function loadAlbumDetails(albumId) {
     try {
+        console.log('Fetching album:', `${API_URL}/api/albums/${albumId}`);
         const response = await fetch(`${API_URL}/api/albums/${albumId}`);
-        if (!response.ok) throw new Error('Failed to fetch album details');
+        
+        if (!response.ok) {
+            console.error('Response not ok:', response.status);
+            throw new Error('Failed to fetch album details');
+        }
+        
         const albumData = await response.json();
+        console.log('Album data received:', albumData);
 
-        // Update page with album details
         document.title = albumData.name;
         document.getElementById('albumTitle').textContent = `${albumData.name}\n${albumData.artist}`;
         document.getElementById('albumCover').src = albumData.coverUrl;
         document.getElementById('albumName').textContent = albumData.name;
-        document.getElementById('releaseYear').textContent = albumData.releaseYear;
+        document.getElementById('releaseYear').textContent = albumData.year;
         document.getElementById('albumGenre').textContent = albumData.genre;
         document.getElementById('albumLength').textContent = albumData.length;
+        
+        await loadAlbumAverage(albumId);
     } catch (error) {
         console.error('Error loading album details:', error);
         throw error;
     }
 }
 
+async function loadAlbumAverage(albumId) {
+    try {
+        const response = await fetch(`${API_URL}/api/albums/${albumId}/average`);
+        if (!response.ok) throw new Error('Failed to fetch average');
+        
+        const data = await response.json();
+        if (data.average > 0) {
+            document.getElementById('averageScore').textContent = data.average.toFixed(1);
+            document.getElementById('scoreBar').style.width = `${data.average}%`;
+        } else {
+            document.getElementById('averageScore').textContent = 'Not Enough Reviews';
+            document.getElementById('scoreBar').style.width = '0%';
+        }
+    } catch (error) {
+        console.error('Error loading average:', error);
+        document.getElementById('averageScore').textContent = 'Error loading average';
+    }
+}
+
 async function loadAlbumReviews(albumId) {
     try {
-        const reviewsResponse = await fetch(`${API_URL}/api/albums/${albumId}/reviews`);
-        if (!reviewsResponse.ok) throw new Error('Failed to fetch reviews');
+        const response = await fetch(`${API_URL}/api/albums/${albumId}/reviews`);
+        if (!response.ok) throw new Error('Failed to fetch reviews');
         
-        const reviewsData = await reviewsResponse.json();
+        const reviews = await response.json();
         const reviewsContainer = document.getElementById('reviewsContainer');
-        
         reviewsContainer.innerHTML = ''; // Clear existing reviews
         
-        reviewsData.forEach(review => {
+        reviews.forEach(review => {
             const reviewElement = document.createElement('div');
             reviewElement.className = 'review';
             reviewElement.innerHTML = `
-                <div class="album-cover">
-                    <img src="${review.userProfilePic}" alt="Profile picture">
-                </div>
-                <div class="album-info">
-                    <a class="album-title" href="profile.html?id=${review.userId}">${review.userName}</a>
-                    <p class="album-rating">Nota: ${review.rating}</p>
+                <div class="review-content">
+                    <div class="review-header">
+                        <span class="review-user">${review.userName}</span>
+                        <span class="review-rating">Rating: ${review.rating}</span>
+                    </div>
                 </div>
             `;
             reviewsContainer.appendChild(reviewElement);
         });
 
-        // Update average score if available
-        if (reviewsData.length > 0) {
-            const avgScore = reviewsData.reduce((acc, rev) => acc + rev.rating, 0) / reviewsData.length;
-            document.getElementById('averageScore').textContent = avgScore.toFixed(1);
-            document.getElementById('scoreBar').style.width = `${avgScore}%`;
+        if (reviews.length === 0) {
+            reviewsContainer.innerHTML = '<p class="no-reviews">No reviews yet</p>';
         }
     } catch (error) {
         console.error('Error loading reviews:', error);
-        throw error;
+        document.getElementById('reviewsContainer').innerHTML = 
+            '<p class="error">Error loading reviews</p>';
     }
 }
 
-async function submitRating(albumId, rating) {
-    const userId = 1; // Replace with actual user ID from authentication
-    
+async function submitReview(albumId, rating) {
     try {
+        const userId = 1; // TODO: Get actual user ID from authentication
         const response = await fetch(`${API_URL}/api/review`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 userId,
                 albumId,
                 rating
-            }),
-            signal: AbortSignal.timeout(5000)
+            })
         });
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            const error = await response.text();
+            throw new Error(error || 'Failed to submit review');
         }
 
-        document.getElementById('savedRating').textContent = `Rating: ${rating}`;
-        alert('Avaliação salva com sucesso!');
-        // Reload reviews to show the new rating
-        await loadAlbumReviews(albumId);
+        // Reload reviews and average after successful submission
+        await Promise.all([
+            loadAlbumReviews(albumId),
+            loadAlbumAverage(albumId)
+        ]);
+
+        return true;
     } catch (error) {
-        console.error('Error submitting rating:', error);
+        console.error('Error submitting review:', error);
         throw error;
     }
 }
@@ -109,7 +132,6 @@ function initializeAlbumPage() {
     ]).catch(error => {
         console.error('Error initializing page:', error);
         alert('Error loading album information');
-        window.location.href = 'home.html';
     });
 
     // Set up rating submission handler
@@ -125,12 +147,13 @@ function initializeAlbumPage() {
         }
 
         try {
-            await submitRating(albumId, rating);
+            await submitReview(albumId, rating);
+            alert('Avaliação salva com sucesso!');
+            albumRatingInput.value = ''; // Clear input after successful submission
         } catch (error) {
             alert(`Erro ao salvar a avaliação: ${error.message}`);
         }
     });
 }
 
-// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeAlbumPage);
