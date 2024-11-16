@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/style_profile.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Perfil do Usuário</title>
+</head>
+<body>
+<div class="container">
+    <div class="user-profile">
+        <div class="user-photo">
+            <img src="assets/foto_perfil_ana.jpeg" alt="Foto do Usuário">
+        </div>
+        <div class="user-info">
+            <h1 class="username" id="userName">Ana Senne</h1>
+            <div class="follow-stats">
+                <div class="followers">
+                    <p class="score">0</p>
+                    <p class="score-title">Seguidores</p>
+                </div>
+                <div class="following">
+                    <p class="score">0</p>
+                    <p class="score-title">Seguindo</p>
+                </div>
+                <label class="toggle">
+                    <input type="checkbox" id="followToggle" onclick="toggleFollow()">
+                    <span class="slider"></span>
+                    <span class="toggle-text">Follow</span>
+                </label>
+            </div>
+        </div>
+        <button id="logoutButton" class="logout-button">Sair</button>
+        <button id="toHomeButton" class="to-home-button">Home</button>
+    </div>
+    <div class="reviews-section">
+        <h2>Reviews</h2>
+        <!-- Aqui entram as reviews do usuário -->
+        <div class="review">
+            <div class="album-cover">
+                <img src="https://i.scdn.co/image/ab67616d0000b2730797b2dcca7a453c3374c599" alt="Album 1">
+            </div>
+            <div class="album-info">
+                <p class="album-title">OK Computer OKNOTOK 1997 2017 - Radiohead</p>
+                <p class="album-rating">Nota: 92</p>
+            </div>
+        </div>
+        <div class="review">
+            <div class="album-cover">
+                <img src="assets/GetRichOrDieTryin.jpg" alt="Album 1">
+            </div>
+            <div class="album-info">
+                <p class="album-title">Get Rich Or Die Trying - 50Cent</p>
+                <p class="album-rating">Nota: 88</p>
+            </div>
+        </div>
+        <div class="review">
+            <div class="album-cover">
+                <img src="assets/The_Eminem_Show.jpg" alt="Album 1">
+            </div>
+            <div class="album-info">
+                <p class="album-title">The Eminem Show - Eminem</p>
+                <p class="album-rating">Nota: 95</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Função para mostrar o nome e ID do usuário no perfil
+    window.onload = function() {
+        const userName = localStorage.getItem('userName');
+        const userId = localStorage.getItem('userId');
+
+        // Exibe o nome e o ID do usuário no perfil
+        if (userName && userId) {
+            document.getElementById('userName').innerHTML = `${userName} #${userId}`;
+        } else {
+            // Se não houver dados armazenados, redireciona para o login
+            window.location.href = "login.html";  // Redireciona para a página de login
+        }
+    }
+</script>
+<script src="js/perfil.js"></script>
+</body>
+</html>

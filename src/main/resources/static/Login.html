@@ -109,8 +109,8 @@
 
     <div class="login-container">
         <h2>Login</h2>
-        <form id="loginForm" action="#" method="POST">
-            <input type="text" id="username" name="username" placeholder="Nome de usuário" required>
+        <form id="loginForm">
+            <input type="text" id="email" name="email" placeholder="Email" required>
             <input type="password" id="password" name="password" placeholder="Senha" required>
             <input type="submit" value="Entrar">
         </form>
@@ -122,29 +122,29 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById("loginForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+<script>
+        // document.getElementById("loginForm").addEventListener("submit", function(event) {
+        //     event.preventDefault();
 
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            var messageDiv = document.getElementById("message");
+        //     var username = document.getElementById("username").value;
+        //     var password = document.getElementById("password").value;
+        //     var messageDiv = document.getElementById("message");
 
-            // Limpa a mensagem de erro anterior
-            messageDiv.innerHTML = "";
+        //     // Limpa a mensagem de erro anterior
+        //     messageDiv.innerHTML = "";
 
-            // Simulação simples de login (troque isso por uma autenticação real com o backend)
-            if (username === "" || password === "") {
-                messageDiv.innerHTML = "<p class='error-message'>Por favor, preencha todos os campos.</p>";
-            } else if (username === "admin" && password === "1234") {
-                messageDiv.innerHTML = "<p class='success-message'>Login bem-sucedido!</p>";
-                // Limpa os campos do formulário
-                document.getElementById("username").value = "";
-                document.getElementById("password").value = "";
-            } else {
-                messageDiv.innerHTML = "<p class='error-message'>Credenciais incorretas. Tente novamente.</p>";
-            }
-        });
+        //     // Simulação simples de login (troque isso por uma autenticação real com o backend)
+        //     if (username === "" || password === "") {
+        //         messageDiv.innerHTML = "<p class='error-message'>Por favor, preencha todos os campos.</p>";
+        //     } else if (username === "admin" && password === "1234") {
+        //         messageDiv.innerHTML = "<p class='success-message'>Login bem-sucedido!</p>";
+        //         // Limpa os campos do formulário
+        //         document.getElementById("username").value = "";
+        //         document.getElementById("password").value = "";
+        //     } else {
+        //         messageDiv.innerHTML = "<p class='error-message'>Credenciais incorretas. Tente novamente.</p>";
+        //     }
+        // });
 
         // Adiciona evento para "Esqueci a senha"
         document.getElementById("forgotPassword").addEventListener("click", function() {
@@ -153,8 +153,9 @@
 
         // Adiciona evento para "Ainda não possui cadastro?"
         document.getElementById("register").addEventListener("click", function() {
-            window.location.href = "/cadastro"; // URL real para a página de cadastro
+            window.location.href = "/cadastro.html"; // URL real para a página de cadastro
         });
     </script>
+    <script src="js/login.js"></script>
 </body>
 </html>

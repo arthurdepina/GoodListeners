@@ -20,12 +20,17 @@ public class User {
 
     private String password;
 
+    @Column(unique = true)
+    private String email;
+
     public User() {
     }
 
-    public User(String name, String password) {
+    public User(Integer userId, String name, String password, String email) {
+        this.userId = userId;
         this.name = name;
         this.password = password;
+        this.email = email;
     }
 
     // Getters e Setters
@@ -53,6 +58,14 @@ public class User {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     // Método toString para facilitar a exibição
     @Override
     public String toString() {
@@ -60,6 +73,7 @@ public class User {
                 "userId=" + userId +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
