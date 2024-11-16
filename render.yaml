@@ -2,7 +2,7 @@ services:
   - type: web
     name: goodlisteners-app
     env: docker
-    healthCheckPath: /api/ping      # Add this line
+    healthCheckPath: /api/ping
     envVars:
       - key: DATABASE_PATH
         value: /data/goodlisteners.db
