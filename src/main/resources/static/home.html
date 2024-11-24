@@ -35,8 +35,12 @@
 <script>
     // Função para buscar os álbuns da API e renderizá-los na página
     async function fetchAndRenderAlbums() {
+        const API_URL = window.location.hostname === 'localhost'
+            ? 'http://localhost:8080'
+            : 'https://goodlisteners.onrender.com';
+
         try {
-            const response = await fetch('http://localhost:8080/api/albums'); // CORRIGIR URL PARA A DE PROD
+            const response = await fetch(`${API_URL}/api/albums`);
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }
@@ -51,7 +55,7 @@
                         <img src="${album.coverUrl}" alt="${album.name}" />
                         <div class="album-info">
                             <h3 class="album-title">
-                                <a class="album-link" href="http://localhost:8080/album.html?id=${album.albumId}">${album.name}</a> // CORRIGIR URL PARA A DE PROD
+                                <a class="album-link" href="${API_URL}/album.html?id=${album.albumId}">${album.name}</a>
                             </h3>
                             <p class="album-artist">${album.artist}</p>
                             <div class="album-score user-score">
