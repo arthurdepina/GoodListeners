@@ -5,6 +5,7 @@ import com.goodlisteners.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -26,6 +27,12 @@ public class AlbumController {
         return albumService.getAlbumById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/albums")
+    public ResponseEntity<List<Album>> getAllAlbums() {
+        List<Album> albums = albumService.getAllAlbums();
+        return ResponseEntity.ok(albums);
     }
 
     // For testing purposes
