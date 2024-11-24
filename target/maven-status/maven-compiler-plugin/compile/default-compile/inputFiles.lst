@@ -1,5 +1,6 @@
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\config\DatabaseConfig.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\config\WebConfig.java
+C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\controllers\AlbumController.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\controllers\HealthCheckController.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\controllers\ReviewController.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\controllers\ReviewRequest.java
@@ -9,8 +10,10 @@ C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\followuser\service\FollowUserService.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\handlers\ReviewHandler.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\main\App.java
+C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\model\Album.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\repository\AlbumRepository.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\repository\ReviewRepository.java
+C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\service\AlbumService.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\service\ReviewService.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\user\model\User.java
 C:\Users\anacl\OneDrive\Documentos\projeto_good_listeners\GoodListeners\src\main\java\com\goodlisteners\user\repository\UserRepository.java
