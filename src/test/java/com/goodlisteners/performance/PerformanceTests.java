@@ -165,7 +165,7 @@ public class PerformanceTests {
         long percentile95 = sortedTimes.get(index95);
 
         System.out.println("\n=== Performance Test Results ===");
-        System.out.println("Number of requests: " + numRequests);
+        System.out.println("# requests: " + numRequests);
         System.out.println("Average response time: " + String.format("%.2f", avgResponseTime) + "ms");
         System.out.println("Min response time: " + minResponseTime + "ms");
         System.out.println("Max response time: " + maxResponseTime + "ms");
@@ -180,10 +180,10 @@ public class PerformanceTests {
             .orElse(0.0);
 
         System.out.println("\n=== Concurrent Performance Test Results ===");
-        System.out.println("Number of threads: " + numThreads);
-        System.out.println("Requests per thread: " + requestsPerThread);
+        System.out.println("# threads: " + numThreads);
+        System.out.println("Requests/thread: " + requestsPerThread);
         System.out.println("Total requests: " + (numThreads * requestsPerThread));
-        System.out.println("Average response time: " + String.format("%.2f", avgResponseTime) + "ms");
+        System.out.println("Avg response time: " + String.format("%.2f", avgResponseTime) + "ms");
         System.out.println("Throughput: " + String.format("%.2f", (1000.0 * numThreads * requestsPerThread) / allTimes.stream().mapToLong(Long::longValue).sum()) + " requests/second");
     }
 }
