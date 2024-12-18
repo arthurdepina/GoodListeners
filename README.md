@@ -4,7 +4,9 @@
 
 Disponível em: https://goodlisteners.onrender.com/home.html (WIP)
 
-Esse projeto utiliza Java Springboot (com Maven) e SQLite. Seguem os pré-requisitos para desenvolvimento local da aplicação:
+Esse projeto utiliza Java Springboot (com Maven) e SQLite.
+O deploy foi feito no [Render](https://render.com/), utilizando Docker.
+Seguem os pré-requisitos para desenvolvimento local da aplicação:
 
 ## MacOS
 
