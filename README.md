@@ -6,6 +6,7 @@ Disponível em: https://goodlisteners.onrender.com/home.html (WIP)
 
 Esse projeto utiliza Java Springboot (com Maven) e SQLite.
 O deploy foi feito no [Render](https://render.com/), utilizando Docker.
+
 Seguem os pré-requisitos para desenvolvimento local da aplicação:
 
 ## MacOS
@@ -68,12 +69,28 @@ mvn clean install
 
 Isso deve baixar todas as dependências e compilar o projeto. Certifique-se de que a build esteja passando antes de prosseguir.
 
-### 5. Testes
+### 5. Docker
 
-É obrigatório verificar se todos os testes estão passando antes de abrir um PR. Para rodar os testes utilize:
+Comandos úteis:
 
 ```bash
-mvn test
+# Parar e remover container atual
+docker rm -f goodlisteners
+
+# Construir nova imagem
+docker build --platform linux/amd64 -t goodlisteners-app .
+
+# Rodar novo container com variáveis de ambiente definidas explicitamente
+docker run -d --name goodlisteners \
+  -p 8080:8080 \
+  -v "$(pwd)/data:/data" \
+  -e DATABASE_PATH=/data/goodlisteners.db \
+  --platform linux/amd64 \
+  goodlisteners-app
+
+# Verificar o filesystem do container.
+docker exec goodlisteners ls -la /data
+docker exec goodlisteners ls -la /app/data
 ```
 
 ### 6. Opcional
@@ -123,14 +140,29 @@ Realize a build executando na raiz do projeto:
 mvn clean install
 ```
 
-### 4. Testes
+### 4. Docker
 
-É obrigatório verificar se todos os testes estão passando antes de abrir um PR. Para rodar os testes utilize:
+Comandos úteis:
 
 ```bash
-mvn test
-```
+# Parar e remover container atual
+docker rm -f goodlisteners
 
+# Construir nova imagem
+docker build --platform linux/amd64 -t goodlisteners-app .
+
+# Rodar novo container com variáveis de ambiente definidas explicitamente
+docker run -d --name goodlisteners \
+  -p 8080:8080 \
+  -v "$(pwd)/data:/data" \
+  -e DATABASE_PATH=/data/goodlisteners.db \
+  --platform linux/amd64 \
+  goodlisteners-app
+
+# Verificar o filesystem do container.
+docker exec goodlisteners ls -la /data
+docker exec goodlisteners ls -la /app/data
+```
 ### 5. Opcional
 
 Se for utilizar o VSCode, recomendo utilizar a extensão SQLite, para interagir com o banco diretamente no editor.
@@ -183,14 +215,26 @@ Realize a build executando o seguinte comando na raiz do projeto.
 mvn clean install
 ```
 
-### 4. Testes
+### 4. Docker
 
-É obrigatório verificar se todos os testes estão passando antes de abrir um PR. Para rodar os testes utilize:
+Comandos úteis:
 
 ```bash
-mvn test
+# Parar e remover container atual
+docker rm -f goodlisteners
+
+# Construir nova imagem
+docker build --platform linux/amd64 -t goodlisteners-app .
+
+# Rodar novo container com variáveis de ambiente definidas explicitamente
+docker run -d --name goodlisteners \
+  -p 8080:8080 \
+  -v "$(pwd)/data:/data" \
+  -e DATABASE_PATH=/data/goodlisteners.db \
+  --platform linux/amd64 \
+  goodlisteners-app
+
+# Verificar o filesystem do container.
+docker exec goodlisteners ls -la /data
+docker exec goodlisteners ls -la /app/data
 ```
-
-### 5. Opcional
-
-Se for utilizar o VSCode, recomendo utilizar a extensão SQLite, para interagir com o banco diretamente no editor.
